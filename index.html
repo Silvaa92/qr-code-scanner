@@ -1,0 +1,315 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+  <meta http-equiv="PRAGMA" content="NO-CACHE">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Source-Live ADR Latency Test">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/bootstrap.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/c2_reen.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/c3_gray.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/font-awesome.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/fontello.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/lato.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/notifications.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/sanspro.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/se.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/source-elements-font.css">
+  <link rel="stylesheet" href="https://gateway.source-elements.com/css/z_gateway.css">
+
+  <title>Source-Live Latency Test</title>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script> -->
+
+  <script src="./js/jquery.min.js"></script>
+  <!-- <script src="./js/bootstrap.min.js"></script> -->
+  <script type="text/javascript" src="./js/instascan.min.js"></script>
+
+</head>
+
+<style type="text/css">
+  body {
+    color: #f7f7f7
+  }
+
+  input {
+    color: #fff
+  }
+
+  btn {
+    border-radius: 10px;
+    background-color: #ccc;
+    font-weight: bold
+  }
+
+  .video-container {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .video-field {
+    width: 720px;
+    height: 480px;
+  }
+
+  .mstext {
+
+    display: block;
+    clear: both;
+  }
+
+  .msdisplay {
+    border-radius: 10px;
+    display: block;
+    background-color: #555;
+    padding: 10px;
+  }
+
+  .navbar-toggler {
+    float: right;
+    border: none;
+    padding-right: 0;
+  }
+
+  .navbar-toggler:active,
+  .navbar-toggler:focus {
+    outline: none;
+  }
+
+  .navbar-light .navbar-toggler-icon {
+    width: 24px;
+    height: 17px;
+    background-image: none;
+    position: relative;
+    border-bottom: 1px solid #000;
+    transition: all 300ms linear;
+  }
+
+  .navbar-light .navbar-toggler-icon:after,
+  .navbar-light .navbar-toggler-icon:before {
+    width: 24px;
+    position: absolute;
+    height: 1px;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    content: '';
+    z-index: 2;
+    transition: all 300ms linear;
+  }
+
+  .navbar-light .navbar-toggler-icon:after {
+    top: 8px;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+    transform: rotate(45deg);
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+    transform: translateY(8px) rotate(-45deg);
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    border-color: transparent;
+  }
+
+  @media (min-width: 769px) {
+    .navbar-toggler {
+      display: none;
+    }
+
+    .controls {
+      padding: 10px 30px;
+    }
+
+    .user-field {
+      padding: 10px 30px;
+    }
+
+    .video {
+      width: 90%;
+      margin: auto;
+      max-height: 600px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .navbar-collapse.show {
+      display: block !important;
+      visibility: visible !important;
+    }
+  }
+
+  @media(max-width: 768px) {
+    .video-container {
+      padding: 16px 5px;
+    }
+
+    .video {
+      width: 100%;
+      height: 200px;
+      max-height: 290px;
+    }
+
+    .navbar-toggler {
+      margin-top: -30px;
+      margin-right: 26px;
+    }
+  }
+</style>
+
+<body>
+  <div>
+    <nav-bar>
+      <div class="navbar yamm start-style navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/"><img
+              src="https://gateway.source-elements.com/assets/images/sc-logo-icon-green.svg" class="logo" alt=""></a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            onclick="openNav()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav pull-left">
+              <li>
+                <a>Source-Live ADR Latency Test</a>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+              <li>
+                <a href="https://source-elements.com/support/source-live/delay">HELP</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </nav-bar>
+    </header>
+
+    <!-- redesign this so it scales for mobile -->
+    <div class="container" style='width:100%'>
+      <div class="video-container" style="border:0px">
+        <video id="video" class="video"></video>
+      </div>
+      <div class="btn-field">
+        <div class="controls">
+          <span class='mstext'> Delay in milliseconds:</span>
+          <span id='milliseconds' class='msdisplay'>00000</span>
+          <input id="latbutton" type="submit" value="Get Latency" class="btn">
+          <input id="resetbutton" type="submit" value="Reset" class="btn">
+        </div>
+      </div>
+
+    </div>
+    <hr />
+
+    <div class="container user-field" style='width:100%'>
+      <h3>USER GUIDE</h3>
+      <p><strong>Step 1.</strong><br />Hold up your phone to the Source-Live Pro video window, and hold up your iPad, so
+        you can see both screens at the same time with your phone camera.</p>
+      <p><strong>Step 2.</strong><br />Click the Get Latency button</p>
+      <p><strong>Step 3.</strong><br />Tell your Source-Live player what your delay is</p>
+    </div>
+    <hr />
+  </div>
+
+  <script type="text/javascript">
+    let counterRunning = false
+    var count = 1;
+    var intervalCounter
+
+    let scanner = new Instascan.Scanner({
+      continuous: true,
+      video: document.getElementById('video'),
+      backgroundScan:true,
+      refractoryPeriod: 800,
+      mirror: false
+    });
+
+    let latbutton = document.querySelector('#latbutton')
+
+    scanner.addListener('scan', function (content) {
+      if (!counterRunning) return
+      count++;
+      if (count <= 2) {
+        document.getElementById("latbutton").value = "Wating for code " + count;
+      }
+      else {
+        count = 1;
+        clearInterval(intervalCounter)
+        document.getElementById("latbutton").value = "Get Latency";
+      }
+      if (count === 2) {
+        var startTime = Date.now();
+        intervalCounter = setInterval(function () {
+          var elapsedTime = Date.now() - startTime;
+          document.getElementById("milliseconds").innerHTML = (elapsedTime / 1000).toFixed(3);
+        }, 100);
+      }
+
+      document.getElementById("cam-qr-result").innerText = content;
+
+    });
+
+    latbutton.addEventListener('click', function (e) {
+      counterRunning = true
+      document.getElementById("latbutton").value = "Wating for code " + count;
+      document.getElementById("milliseconds").innerHTML = 0.000;
+    })
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length === 1) {
+        scanner.start(cameras[0]);
+        return
+      }
+      if (cameras.length > 1) {
+        scanner.start(cameras[1]);
+      } else {
+        console.error('No cameras found.');
+      }
+    }).catch(function (e) {
+      console.error(e);
+    });
+
+    let resetbutton = document.querySelector("#resetbutton");
+
+    resetbutton.addEventListener('click', function (e) {
+      clearInterval(intervalCounter)
+      counterRunning = false
+      console.log(counterRunning)
+      document.getElementById("latbutton").value = "Get Latency";
+      document.getElementById("milliseconds").innerHTML = 0.000;
+      count = 1;
+      document.getElementById("cam-qr-result").innerText = "None";
+
+    })
+
+    function openNav() {
+
+      var element = document.getElementById("navbarSupportedContent");
+      if (element.classList.contains("show")) {
+        element.classList.add("hide");
+        element.classList.remove("show");
+      }
+      else {
+        element.classList.remove("hide");
+        element.classList.add("show");
+      }
+    }
+  </script>
+
+</body>
+
+</html>
